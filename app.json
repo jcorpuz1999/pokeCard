@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "pokeCard",
+    "slug": "pokeCard",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "pokeCard"
+}

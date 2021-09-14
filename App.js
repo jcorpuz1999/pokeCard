@@ -1,21 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useContext} from 'react';
+import * as eva from '@eva-design/eva';
+import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
+import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import { AppNavigator } from './AppNavigation';
+import { GlobalContext } from './AppContext';
+import PokeLocale from './locale/PokeLocale';
 
-export default function App() {
+const App = () => {
+  const pokeLocale = PokeLocale()
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <GlobalContext.Provider value={{
+      pokeLocale
+    }}>
+      <IconRegistry icons={EvaIconsPack}/>
+      <ApplicationProvider {...eva} theme={eva.dark}>
+        <AppNavigator/>
+      </ApplicationProvider>
+    </GlobalContext.Provider>
+  )
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App
